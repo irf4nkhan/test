@@ -1,0 +1,36 @@
+{
+    "name": "Zillow",
+    "short_name": "Zillow",
+    "version": "1.4.1",
+    "manifest_version": 2,
+    "description": "Extension for zillow.",
+    "icons": {
+        "16": "icons/logo.png",
+        "48": "icons/logo.png",
+        "128": "icons/logo.png"
+    },
+
+
+    "browser_action": {
+        "default_title": "Zillow"
+    },
+
+    "permissions": [
+        "storage", "tabs", "<all_urls>"
+    ],
+
+    "content_scripts": [{
+        "matches": ["*://*.zillow.com/*"],
+        "js": ["js/jquery.js", "js/script.js"],
+        "run_at": "document_start",
+        "all_frames": true
+    }],
+
+    "background": {
+        "persistent": true,
+        "scripts": ["js/jquery.js", "src/bg/background.js"]
+    },
+
+    "web_accessible_resources": ["src/browser_action/browser_action.html"]
+
+}
